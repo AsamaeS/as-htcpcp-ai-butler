@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 4%;
+    --foreground: 40 20% 90%;
+
+    --card: 260 15% 8%;
+    --card-foreground: 40 20% 90%;
+
+    --popover: 260 15% 6%;
+    --popover-foreground: 40 20% 90%;
+
+    --primary: 0 70% 32%;
+    --primary-foreground: 40 20% 95%;
+
+    --secondary: 270 20% 15%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 260 10% 18%;
+    --muted-foreground: 40 10% 55%;
+
+    --accent: 43 70% 53%;
+    --accent-foreground: 240 10% 4%;
+
+    --destructive: 0 84% 40%;
+    --destructive-foreground: 40 20% 95%;
+
+    --border: 260 15% 18%;
+    --input: 260 15% 15%;
+    --ring: 43 70% 53%;
+
+    --radius: 0.5rem;
+
+    /* Custom colors for the murder mystery theme */
+    --orb-glow: 43 80% 55%;
+    --orb-core: 43 90% 70%;
+    --blood: 0 70% 32%;
+    --blood-dark: 0 80% 20%;
+    --fog: 260 10% 50%;
+    --shadow-purple: 270 30% 12%;
+    --candle-light: 35 90% 60%;
+    --mystery-gold: 43 70% 53%;
+
+    /* Gradients */
+    --gradient-dark: linear-gradient(180deg, hsl(240 10% 4%) 0%, hsl(270 20% 8%) 100%);
+    --gradient-fog: linear-gradient(180deg, transparent 0%, hsl(260 10% 20% / 0.3) 50%, transparent 100%);
+    --gradient-blood: linear-gradient(135deg, hsl(0 70% 32%) 0%, hsl(0 80% 20%) 100%);
+    --gradient-orb: radial-gradient(circle, hsl(43 90% 70%) 0%, hsl(43 80% 55%) 40%, transparent 70%);
+    
+    /* Shadows */
+    --shadow-glow: 0 0 60px hsl(43 80% 55% / 0.4);
+    --shadow-blood: 0 0 40px hsl(0 70% 32% / 0.3);
+    --shadow-dark: 0 20px 60px hsl(0 0% 0% / 0.8);
+
+    --sidebar-background: 260 15% 6%;
+    --sidebar-foreground: 40 20% 90%;
+    --sidebar-primary: 43 70% 53%;
+    --sidebar-primary-foreground: 240 10% 4%;
+    --sidebar-accent: 260 15% 15%;
+    --sidebar-accent-foreground: 40 20% 90%;
+    --sidebar-border: 260 15% 18%;
+    --sidebar-ring: 43 70% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Crimson Text', Georgia, serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer utilities {
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+
+  .font-crimson {
+    font-family: 'Crimson Text', Georgia, serif;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--accent) / 0.5);
+  }
+
+  .text-blood-glow {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+}
+
+/* Fog animation */
+@keyframes fog-drift {
+  0%, 100% {
+    transform: translateX(-5%) translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(5%) translateY(-10px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes orb-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes orb-glow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+  25%, 75% { opacity: 0.9; }
+}
+
+.animate-fog {
+  animation: fog-drift 20s ease-in-out infinite;
+}
+
+.animate-orb-pulse {
+  animation: orb-pulse 4s ease-in-out infinite;
+}
+
+.animate-orb-glow {
+  animation: orb-glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-flicker {
+  animation: flicker 3s ease-in-out infinite;
+}
